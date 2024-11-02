@@ -11,25 +11,32 @@ import ScreenComponent from "@/components/ScreenComponent";
 import { Colors } from "@/constants/Colors";
 import Button from "@/components/Button";
 
-export default function Home() {
+export default function RegisterScreen() {
   return (
     <ScreenComponent style={styles.screen}>
       <Image style={styles.logo} source={require("./img/Logo.png")} />
       <View style={styles.header}>
-        <Text style={styles.greeting}>Olá!</Text>
-        <Text style={styles.welcomeText}>Que bom que está aqui!</Text>
+        <Text style={styles.greeting}>Bem-vindo!</Text>
+        <Text style={styles.welcomeText}>Crie sua conta.</Text>
       </View>
 
       <View style={styles.inputsContainer}>
         <View style={styles.input}>
-          <Image style={styles.img} source={require("./img/ico-lock.png")} />
+          <Image style={styles.img} source={require("./img/ico-user.png")} />
+          <TextInput
+            style={styles.inputText}
+            placeholder="Seu Nome"
+          />
+        </View>
+        <View style={styles.input}>
+          {/* <Image style={styles.img} source={require("./img/ico-email.png")} /> */}
           <TextInput
             style={styles.inputText}
             placeholder="email@exemplo.com.br"
           />
         </View>
         <View style={styles.input}>
-          <Image style={styles.img} source={require("./img/ico-user.png")} />
+          <Image style={styles.img} source={require("./img/ico-lock.png")} />
           <TextInput
             style={styles.inputText}
             placeholder="******"
@@ -39,18 +46,16 @@ export default function Home() {
 
         <Button
           color={Colors.highlight}
-          text={"Entrar"}
-          onPress={undefined}
-        ></Button>
-
-        <Text style={styles.forgotPassword}>Esqueci minha senha</Text>
+          text={"Registrar"}
+          onPress={undefined} // Substitua pela função de registro
+        />
       </View>
 
-      <Button
-        color={Colors.secondary}
-        text={"Crie sua conta"}
-        onPress={undefined}
-      ></Button>
+      <TouchableOpacity style={styles.signInLink}>
+        <Text style={styles.linkText}>
+          Já tem uma conta? Faça login
+        </Text>
+      </TouchableOpacity>
     </ScreenComponent>
   );
 }
@@ -112,37 +117,15 @@ const styles = StyleSheet.create({
     color: "#000",
     fontSize: 16,
   },
-  signInButton: {
-    width: "100%",
-    height: 55,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: Colors.highlight,
-    borderRadius: 30,
-    marginVertical: 10,
+  signInLink: {
+    marginTop: 15,
   },
-  buttonText: {
+  linkText: {
     fontFamily: "Work Sans",
-    fontWeight: "bold",
-    color: "#fff",
-    fontSize: 18,
-  },
-  forgotPassword: {
-    fontFamily: "Lato-Bold",
-    fontWeight: "700",
+    fontWeight: "400",
     color: "#3B82F6",
-    fontSize: 12,
+    fontSize: 14,
     textDecorationLine: "underline",
-    marginTop: 10,
-  },
-  signUpButton: {
-    width: "90%",
-    height: 55,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: Colors.secondary,
-    borderRadius: 30,
-    marginVertical: 10,
   },
   logo: {
     width: 80,
