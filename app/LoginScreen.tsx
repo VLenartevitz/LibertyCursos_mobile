@@ -10,6 +10,7 @@ import {
 import ScreenComponent from "@/components/ScreenComponent";
 import { Colors } from "@/constants/Colors";
 import Button from "@/components/Button";
+import { router } from "expo-router";
 
 export default function Login() {
   return (
@@ -49,7 +50,7 @@ export default function Login() {
       <Button
         color={Colors.secondary}
         text={"Crie sua conta"}
-        onPress={undefined}
+        onPress={() => router.push("/RegisterScreen")}
       ></Button>
     </ScreenComponent>
   );

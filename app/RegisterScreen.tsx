@@ -10,14 +10,14 @@ import {
 import ScreenComponent from "@/components/ScreenComponent";
 import { Colors } from "@/constants/Colors";
 import Button from "@/components/Button";
+import { router } from "expo-router";
 
 export default function RegisterScreen() {
   return (
     <ScreenComponent style={styles.screen}>
       <Image style={styles.logo} source={require("./img/Logo.png")} />
       <View style={styles.header}>
-        <Text style={styles.greeting}>Bem-vindo!</Text>
-        <Text style={styles.welcomeText}>Crie sua conta.</Text>
+        <Text style={styles.greeting}>Crie sua conta!</Text>
       </View>
 
       <View style={styles.inputsContainer}>
@@ -29,8 +29,8 @@ export default function RegisterScreen() {
           />
         </View>
         <View style={styles.input}>
-          {/* <Image style={styles.img} source={require("./img/ico-email.png")} /> */}
-          <TextInput
+        <Image style={styles.img} source={require("./img/ico-user.png")} />
+        <TextInput
             style={styles.inputText}
             placeholder="email@exemplo.com.br"
           />
@@ -51,7 +51,8 @@ export default function RegisterScreen() {
         />
       </View>
 
-      <TouchableOpacity style={styles.signInLink}>
+      <TouchableOpacity style={styles.signInLink}         onPress={() => router.push("/LoginScreen")}
+      >
         <Text style={styles.linkText}>
           Já tem uma conta? Faça login
         </Text>
