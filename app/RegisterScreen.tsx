@@ -10,6 +10,7 @@ import {
 import ScreenComponent from "@/components/ScreenComponent";
 import { Colors } from "@/constants/Colors";
 import Button from "@/components/Button";
+import { router } from "expo-router";
 
 export default function RegisterScreen() {
   return (
@@ -47,8 +48,8 @@ export default function RegisterScreen() {
         <Button
           color={Colors.highlight}
           text={"Registrar"}
-          onPress={undefined} // Substitua pela função de registro
-        />
+          onPress={() => router.navigate('/LoginScreen')}
+          />
       </View>
 
       <TouchableOpacity style={styles.signInLink}>
