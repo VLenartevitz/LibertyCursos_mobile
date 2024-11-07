@@ -41,8 +41,8 @@ export default function Login() {
         <Button
           color={Colors.highlight}
           text={"Entrar"}
-          onPress={undefined}
-        ></Button>
+          onPress={() => router.navigate('/HomeScreen')}
+          ></Button>
 
         <Text style={styles.forgotPassword}>Esqueci minha senha</Text>
       </View>

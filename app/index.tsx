@@ -50,8 +50,8 @@ export default function Home() {
       <Button
         color={Colors.secondary}
         text={"Crie sua conta"}
-        onPress={() => router.navigate('/RegisterScreen')}
-      ></Button>
+        onPress={() => router.navigate('/HomeScreen')}
+        ></Button>
     </ScreenComponent>
   );
 }
