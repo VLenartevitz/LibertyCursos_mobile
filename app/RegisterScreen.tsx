@@ -47,8 +47,8 @@ export default function RegisterScreen() {
         <Button
           color={Colors.highlight}
           text={"Registrar"}
-          onPress={undefined} // Substitua pela função de registro
-        />
+          onPress={() => router.navigate('/LoginScreen')}
+          />
       </View>
 
       <TouchableOpacity style={styles.signInLink}         onPress={() => router.push("/LoginScreen")}

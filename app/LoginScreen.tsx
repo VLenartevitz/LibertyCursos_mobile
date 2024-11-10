@@ -41,8 +41,8 @@ export default function Login() {
         <Button
           color={Colors.highlight}
           text={"Entrar"}
-          onPress={undefined}
-        ></Button>
+          onPress={() => router.navigate('/HomeScreen')}
+          ></Button>
 
         <Text style={styles.forgotPassword}>Esqueci minha senha</Text>
       </View>
@@ -50,7 +50,7 @@ export default function Login() {
       <Button
         color={Colors.secondary}
         text={"Crie sua conta"}
-        onPress={() => router.push("/RegisterScreen")}
+        onPress={() => router.navigate('/RegisterScreen')}
       ></Button>
     </ScreenComponent>
   );
