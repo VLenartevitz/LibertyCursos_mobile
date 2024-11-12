@@ -1,22 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
   TouchableOpacity,
   StyleSheet,
   FlatList,
+  ActivityIndicator,
 } from "react-native";
+import axios from "axios";
 import ScreenComponent from "@/components/ScreenComponent";
 
-export default function FAQScreen() {
-  // Dados de exemplo com perguntas e respostas
-  const [questions, setQuestions] = useState([
-    { id: '1', question: "O que é React Native?", answer: "React Native é um framework para desenvolvimento de aplicativos móveis usando JavaScript e React." },
-    { id: '2', question: "O que é Expo?", answer: "Expo é uma ferramenta que simplifica o desenvolvimento de aplicativos React Native, oferecendo um ambiente de desenvolvimento completo." },
-    { id: '3', question: "Como instalar pacotes no projeto?", answer: "Você pode instalar pacotes usando o npm ou yarn. Por exemplo: npm install pacote ou yarn add pacote." },
-  ]);
+export default function ProvaScreen() {
+  const [questions, setQuestions] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Função para alternar a visibilidade da resposta
+  // Função para buscar as perguntas da API
+  const fetchQuestions = async () => {
+    try {
+      const response = await axios.get("http://192.168.1.100:3000/api/check-answers");
+      console.error("foi");
+    } catch (error) {
+      console.error("Erro ao buscar perguntas:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchQuestions();
+  }, []);
+
   const toggleAnswer = (id) => {
     setQuestions((prevQuestions) =>
       prevQuestions.map((item) =>
@@ -34,13 +47,17 @@ export default function FAQScreen() {
     </View>
   );
 
+  if (loading) {
+    return <ActivityIndicator size="large" color="#0000ff" />;
+  }
+
   return (
     <ScreenComponent style={styles.screen}>
       <Text style={styles.headerText}>Perguntas Frequentes</Text>
       <FlatList
         data={questions}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.listContainer}
       />
     </ScreenComponent>
